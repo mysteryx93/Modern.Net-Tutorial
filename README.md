@@ -45,4 +45,6 @@ I got tired of Windows taking ownership of our computer and dumped it ahead of W
 
 For programming IDE, Visual Studio works only in Windows, and Visual Studio Code is very limited. I'm using [JetBrains Rider](https://www.jetbrains.com/rider/) which works on Windows, Linux and MacOS. They have free license for students and for open source developpers (as long as you have an active project history). [See their offers here.](https://www.jetbrains.com/rider/buy/#discounts) Even on Windows, you'll get a great productivity boost by switching to JetBrains Rider -- try it and you won't look back. JetBrains Rider has great support for Avalonia.
 
-Basically -- .NET works best is you dump Windows, WPF and Visual Studio.
+Basically -- .NET works best if you dump Windows, WPF and Visual Studio.
+
+There are many topics to cover to build modern applications, and I'll cover a good selection of tools and designs. You could read a whole book on each topic, and I'll summarize the essentials with my own experience, with links to learn more.
