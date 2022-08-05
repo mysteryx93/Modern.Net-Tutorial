@@ -13,7 +13,7 @@
 
 MVVM stands for Model - View - ViewModel.
 
-If you look at my [project structure](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Player432hz), I have: Models, Views, ViewModels, Business and Assets. [Services](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Common.Services) have been moved to a separate project but could definitely be in a folder.
+If you look at my [project structure](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Converter432hz), I have: Models, Views, ViewModels, Business and Assets. [Services](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Common.Services) have been moved to a separate project but could definitely be in a folder.
 
 **Models** are data structures to hold data. Ideally, it shouldn't contain any logic at all. Such logic should instead be moved to your services and ViewModels.
 
@@ -90,17 +90,15 @@ I've also kept my `App.axaml.cs` file clean by moving [Styles](https://github.co
 ```xaml
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:HanumanInstitute.Player432hz"
+             xmlns:local="using:HanumanInstitute.Converter432hz"
              xmlns:ui="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
-             x:Class="HanumanInstitute.Player432hz.App">
+             x:Class="HanumanInstitute.Converter432hz.App">
     <Application.DataTemplates>
         <local:ViewLocator />
     </Application.DataTemplates>
     <Application.Styles>
         <ui:FluentAvaloniaTheme PreferSystemTheme="False" />
         <StyleInclude Source="avares://Common.Avalonia.App/Styles/CommonStyles.axaml" />
-        <StyleInclude Source="avares://MediaPlayer.Avalonia/Styles/Default/Theme.axaml" />
-        <StyleInclude Source="avares://MediaPlayer.Avalonia/Styles/Colors/Gray.axaml" />
     </Application.Styles>
     <Application.Resources>
         <ResourceDictionary>
