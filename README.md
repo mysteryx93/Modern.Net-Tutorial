@@ -7,6 +7,7 @@
 [5. Dialogs and Tools](5_DialogsTools.md)  
 [6. Unit Testing](6_UnitTesting.md)  
 [7. Reactive](7_Reactive.md)  
+[8. Deployment](8_Deployment.md)
 
 ## 1. Introduction
 
