@@ -56,6 +56,8 @@ private Task ShowAdvancedSettingsImpl() =>
 
 [HanumanInstitute.MvvmDialogs](https://github.com/mysteryx93/HanumanInstitute.MvvmDialogs/) is very well documented so take the time to read the documentation.
 
+MvvmDialogs is what allows me to keep my View code-behind empty while others put some code.
+
 ### HanumanInstitute.Validators
 
 [HanumanInstitute.Validators](https://github.com/mysteryx93/HanumanInstitute.Validators) comes with very handy tools.
