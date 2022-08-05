@@ -107,9 +107,7 @@ public static class ViewModelLocator
             viewModelFactory: t => Locator.Current.GetService(t)));
             
         // ViewModels
-        SplatRegistrations.Register<MainViewModel>("Init");
-        container.Register(() => 
-            Design.IsDesignMode ? new MainViewModelDesign() : Locator.Current.GetService<MainViewModel>("Init"));
+        SplatRegistrations.Register<MainViewModel>();
 
         // Business
         SplatRegistrations.RegisterLazySingleton<ISettingsProvider<AppSettingsData>, AppSettingsProvider>("Init");
