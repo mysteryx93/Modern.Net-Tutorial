@@ -118,6 +118,8 @@ Make sure that you target the right framework, that Nullables are enabled, and t
 <LangVersion>default</LangVersion>
 ```
 
+For code styles, if you want to use the most recommended coding practices, it is safe to grab the `.editorconfig` file from the .NET Roslyn Compiler project [here](https://github.com/dotnet/roslyn/blob/main/.editorconfig). Place it in your solution folder to be available for all projects.
+
 ### App.xaml.cs
 
 Put this in App.xaml.cs
