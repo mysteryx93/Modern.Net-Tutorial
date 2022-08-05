@@ -41,7 +41,7 @@ But WAIT! There is one more option: [Avalonia UI](https://avaloniaui.net/). A re
 
 ### My Setup
 
-I got tired of Windows taking ownership of our computer and dumped it ahead of Windows 11's release. I'm using Linux; if you're a programmer, Arch-based is a good option to be cutting-edge. I choose [Garuda Linux](https://garudalinux.org/) and love it. I got Windows in a VM and rarely use it at all. This forced me to modernize all my apps.
+I got tired of Windows taking ownership of our computer and dumped it ahead of Windows 11's release. I'm using Linux; if you're a programmer, Arch-based is a good option to be cutting-edge. I choose [Garuda Linux](https://garudalinux.org/) and love it (but do NOT install arch-based for your wife and grand-ma!). I got Windows in a VM and rarely use it at all. This forced me to modernize all my apps.
 
 For programming IDE, Visual Studio works only in Windows, and Visual Studio Code is very limited. I'm using [JetBrains Rider](https://www.jetbrains.com/rider/) which works on Windows, Linux and MacOS. They have free license for students and for open source developpers (as long as you have an active project history). [See their offers here.](https://www.jetbrains.com/rider/buy/#discounts) Even on Windows, you'll get a great productivity boost by switching to JetBrains Rider -- try it and you won't look back. JetBrains Rider has great support for Avalonia.
 
