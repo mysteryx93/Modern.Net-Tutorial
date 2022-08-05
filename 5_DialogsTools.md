@@ -87,6 +87,6 @@ Go through [HanumanInstitute.Validators](https://github.com/mysteryx93/HanumanIn
 
 ### HanumanInstitute.MediaPlayerUI
 
-[HanumanInstitute.MediaPlayerUI](https://github.com/mysteryx93/MediaPlayerUI.NET/) is a bit more niche, but if you need a media player, or the UI of a media player for your custom needs, this is it. For Avalonia, it currently only supports audio playback via BASS as of writing this. MPV support will come later.
+[HanumanInstitute.MediaPlayerUI](https://github.com/mysteryx93/MediaPlayerUI.NET/) is a bit more niche, but if you need a media player, or the UI of a media player for your custom needs, this is it. For Avalonia, it currently only supports audio playback via [BASS](https://www.un4seen.com/) as of writing this. [MPV](https://mpv.io/) support will come later.
 
 [> Next: Unit Testing](6_UnitTesting.md)
