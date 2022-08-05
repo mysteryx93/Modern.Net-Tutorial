@@ -52,6 +52,6 @@ There are many topics to cover to build modern applications, and I'll cover a go
 
 I will use the [432hz Player](https://sourceforge.net/projects/player432hz/) several times for sample codes.
 
-You can post your comments in the [Discussions section](https://github.com/mysteryx93/Modern.Net-Tutorial/discussions).
+You can post your comments in the [Discussions section](https://github.com/mysteryx93/Modern.Net-Tutorial/discussions). It can be downloaded for Windows, Linux or MacOS.
 
 [> Next: Avalonia UI](2_Avalonia.md)
