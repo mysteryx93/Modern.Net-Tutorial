@@ -123,3 +123,6 @@ public static class ViewModelLocator
     public static ISettingsProvider<AppSettingsData> SettingsProvider => Locator.Current.GetService<ISettingsProvider<AppSettingsData>>()!;
 }
 ```
+
+### Designing Services
+
