@@ -120,6 +120,17 @@ Make sure that you target the right framework, that Nullables are enabled, and t
 
 For code styles, if you want to use the most recommended coding practices, it is safe to grab the `.editorconfig` file from the .NET Roslyn Compiler project [here](https://github.com/dotnet/roslyn/blob/main/.editorconfig). Place it in your solution folder to be available for all projects.
 
+Also make sure to create a file `GlobalUsings.cs` that contains namespaces that you commonly use.
+
+```c#
+global using System;
+global using System.Collections;
+global using System.Collections.Generic;
+global using System.Threading.Tasks;
+global using RxCommandUnit = ReactiveUI.ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit>;
+global using static System.FormattableString; 
+```
+
 ### App.xaml.cs
 
 Put this in App.xaml.cs
