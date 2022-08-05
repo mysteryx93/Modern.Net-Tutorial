@@ -1,6 +1,6 @@
 # Tutorial: Build Modern Cross-Platform Apps with .NET
 
-[1. Introduction](1_Introduction.md)  
+[1. Introduction](README.md)  
 [2. Avalonia UI](2_Avalonia.md)  
 [3. Dependency Injection](3_DependencyInjection.md)  
 [4. MVVM Design](4_MVVM.md)  
