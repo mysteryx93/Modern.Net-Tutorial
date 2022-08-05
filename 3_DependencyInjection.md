@@ -154,4 +154,11 @@ For example, I created a [Cloning](https://github.com/mysteryx93/HanumanInstitut
 
 Another rule of thumb is to avoid `new` keyword in your code. New classes should generally be injected in the constructor, or if you need to create multiple instances, you will inject a Factory in your constructor that is responsible for creating instances. [Here's a sample Factory.](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Player432hz/ViewModels/PlaylistViewModelFactory.cs) The class to create has dependencies, and the factory is responsible for filling those dependencies. The only occasion where it is OK to use the `new` keyword is for well-encapsulated objects that have no side-effects.
 
+### Options
+
+For configurable settings, you'll generally want to use the standard [Options pattern](https://docs.microsoft.com/en-us/dotnet/core/extensions/options). That document is a bit scary. Basically your class takes `IOptions<MySettings>` as a constructor parameter, which, in the simplest case, can be set with `Options.Create(new MySettings())`. IOptions exposes a single method: Value. You need to respect this pattern particularly if you code can ever be used from an ASP.NET project. To use this, you need a reference to `Microsoft.Extensions.Options`.
+
+For a desktop application that saves its settings into a XML configuration file, I also created a [SettingsProvider](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Services/Utilities/SettingsProvider.cs) that handles the data, along with a [design-time version](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Services/Utilities/SettingsProviderDesign.cs) that doesn't load nor save settings to the hard drive. I then use it in my project [like this](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Player432hz/Business/AppSettingsProvider.cs), alongside a [design-time version](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Player432hz/Business/AppSettingsProviderDesign.cs). I then [register](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Player432hz/ViewModelLocator.cs#L44) both the runtime and design-time SettingsProvider into my Dependency Injection Container.
+
+
 [> Next: MVVM Design](4_MVVM.md)
