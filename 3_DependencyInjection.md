@@ -144,6 +144,8 @@ var result = await list.ForEachOrderedAsync(x => DoSomeWorkAsync(x), 8);
 
 Ideally, your code should do nothing complex, and no hacks. Anything hacky is a red flag. Write it once and write it well.
 
+It's easy to write complex code. It's a lot harder to write simple and polished code. You often need to rewrite it a few times to trim the complexity out of it.
+
 If you find yourself having more than 8 dependencies, then your class is probably doing more than one thing and could be split into two separate classes.
 
 Avoid static methods and classes. They cannot be mocked for unit testing. Instead, use Singleton classes (single instance for the whole application) or extension methods. You can make rare exceptions only if the class does something very specific and predictable with no side-effect.
