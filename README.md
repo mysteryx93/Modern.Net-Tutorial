@@ -51,4 +51,4 @@ There are many topics to cover to build modern applications, and I'll cover a go
 
 I will use the [432hz Player](https://sourceforge.net/projects/player432hz/) several times for sample codes.
 
-[Next: Avalonia UI](2_Avalonia.md)
+[> Next: Avalonia UI](2_Avalonia.md)
