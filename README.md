@@ -5,8 +5,8 @@
 [3. Dependency Injection](3_DependencyInjection.md)  
 [4. MVVM Design](4_MVVM.md)  
 [5. Dialogs and Tools](5_DialogsTools.md)  
-[6. Unit Testing](6_UnitTesting)  
-[7. Reactive](7_Reactive)  
+[6. Unit Testing](6_UnitTesting.md)  
+[7. Reactive](7_Reactive.md)  
 
 ## 1. Introduction
 
