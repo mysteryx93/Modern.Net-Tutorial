@@ -71,4 +71,4 @@ In the XAML, 'd' prefix allows setting design-time properties. This allows setti
 d:DataContext="{x:Static local:ViewModelLocator.Main}"
 ```
 
-[Next: Dependency Injection](3_DependencyInjection.md)
+[> Next: Dependency Injection](3_DependencyInjection.md)
