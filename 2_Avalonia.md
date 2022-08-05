@@ -47,6 +47,38 @@ Rewrite your auto-generated WPF code with StackPanel and grids and you'll get mu
 
 [FluentAvalonia](https://github.com/amwx/FluentAvalonia) provides better styles and more controls, so you may want to use that too. There are no build-in MessageBox in Avalonia, and FluentAvalonia provides that.
 
+Download their source code and run their sample app to view all the controls in action. The sample application also allows you to browse all style resources and active colors, and is thus a very useful tool.
+
+### Icons
+
+[Svg.Skia](https://github.com/wieslawsoltes/Svg.Skia) is an option for SVG icons; but it cannot adapt the icon color dynamically.
+
+FluentAvalonia provides `SymbolIcon` with build-in icons for most of your needs. Download their source code and run their sample app to view them.
+
+```xaml
+<flu:SymbolIcon Symbol="Add" FontSize="20" />
+```
+
+If you need icons that are not in SymbolIcon, there is a way to convert SVG to a Path, but that can get complicated, and Path requires you to set a fixed Brush so it won't adapt to the button Forecolor.
+
+I find it easier to create a font containing the custom icons.
+
+[Here's a simple guide on creating an icons font using FontForge.](https://mohammedraji.github.io/posts/The-Definitive-guide-to-create-an-icon-font/)
+
+My button then looks like this
+```c#
+<Button Classes="icon" Width="35" Content="I" />
+```
+
+With `icon` defined as
+
+```xaml
+<Style Selector="Button.icon">
+    <Setter Property="FontFamily" Value="avares://Common.Avalonia.App/Styles/HanumanInstituteAppIcons.otf#" />
+    <Setter Property="FontSize" Value="17" />
+</Style>
+```
+
 ### Sample Code
 
 [Here are some sample Views created using these principles.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Player432hz/Views)
@@ -69,6 +101,30 @@ In the XAML, 'd' prefix allows setting design-time properties. This allows setti
 
 ```xaml
 d:DataContext="{x:Static local:ViewModelLocator.Main}"
+```
+
+### App.xaml.cs
+
+Put this in App.xaml.cs
+
+As of writing this, there's a bug where XAML namespaces of custom libraries do not get recognized by the designer. You must use `GC.KeepAlive` on any class within such libraries to solve this.
+
+Also, I found out that when using the designer, there is no point in initializing your MainView and application; you can skip app initialization and the preview will show faster.
+
+```c#
+public override async void OnFrameworkInitializationCompleted()
+{
+#if DEBUG
+    // Required by Avalonia XAML editor to recognize custom XAML namespaces. Until they fix the problem.
+    GC.KeepAlive(typeof(SvgImage));
+    GC.KeepAlive(typeof(EventTriggerBehavior));
+
+    if (Design.IsDesignMode)
+    {
+        base.OnFrameworkInitializationCompleted();
+        return;
+    }
+#endif
 ```
 
 [> Next: Dependency Injection](3_DependencyInjection.md)
