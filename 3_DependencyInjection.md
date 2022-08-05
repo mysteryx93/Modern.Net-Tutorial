@@ -124,3 +124,30 @@ public static class ViewModelLocator
 
 ### Designing Services
 
+To design a new service, consider this.
+
+1. Your class should do one thing and one thing only. The only reason that class should change is if that one thing changes.
+2. You should not care at all about what the UI is going to look like.
+3. All inputs and outputs must be done through interface dependencies injected via the constructor so that they can be replaced with fakes.
+
+Sometimes the work is split into various layers. Here I have [AudioEncoder](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/BassAudio/AudioEncoder.cs) to encode audio files via BASS library. It is then used by [EncoderService](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Converter432hz/Business/EncoderService.cs) to do multi-threaded batch-processing for a list of files. EncoderService doesn't care about the UI. I then use it in [MainViewModel](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Converter432hz/ViewModels/MainViewModel.cs) that binds the encoder settings to the UI. MainViewModel glues various components together to provide an UI but really doesn't do much in itself.
+
+### Programming Guidelines
+
+When programming, I always avoid complex code. If something is complex, I write it once in a service with a clean API, or as an extension method, and then call it in a simple way.
+
+For example, processing 100 items, 8 simultaneously, to produce a result in the same order, can be complicated multi-threading code. [Not anymore with this extension method.](https://github.com/mysteryx93/HanumanInstitute.Validators/blob/master/Validators/ListExtensions.cs#L182)
+
+```c#
+var result = await list.ForEachOrderedAsync(x => DoSomeWorkAsync(x), 8);
+```
+
+Ideally, your code should do nothing complex, and no hacks. Anything hacky is a red flag. Write it once and write it well.
+
+If you find yourself having more than 8 dependencies, then your class is probably doing more than one thing and could be split into two separate classes.
+
+Avoid static methods and classes. They cannot be mocked for unit testing. Instead, use Singleton classes (single instance for the whole application) or extension methods. You can make rare exceptions only if the class does something very specific and predictable with no side-effect.
+
+For example, I created a [Cloning](https://github.com/mysteryx93/HanumanInstitute.Validators/blob/master/Validators/Cloning.cs) class to facilitate cloning objects. Actually, it could have been an extension method, but I avoid creating extension methods on type Object to avoid spamming the intellisense.
+
+Another rule of thumb is to avoid `new` keyword in your code. New classes should generally be injected in the constructor, or if you need to create multiple instances, you will inject a Factory in your constructor that is responsible for creating instances. [Here's a sample Factory.](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Player432hz/ViewModels/PlaylistViewModelFactory.cs) The class to create has dependencies, and the factory is responsible for filling those dependencies. The only occasion where it is OK to use the `new` keyword is for well-encapsulated objects that have no side-effects.
