@@ -50,8 +50,8 @@ Basically -- .NET works best if you dump Windows, WPF and Visual Studio.
 
 There are many topics to cover to build modern applications, and I'll cover a good selection of tools and designs. You could read a whole book on each topic, and I'll summarize the essentials with my own experience, with links to learn more.
 
-I will use the [432hz Player](https://sourceforge.net/projects/player432hz/) several times for sample codes.
+I will use the [432hz Player](https://sourceforge.net/projects/player432hz/) several times for sample codes. It can be downloaded for Windows, Linux or MacOS.
 
-You can post your comments in the [Discussions section](https://github.com/mysteryx93/Modern.Net-Tutorial/discussions). It can be downloaded for Windows, Linux or MacOS.
+You can post your comments in the [Discussions section](https://github.com/mysteryx93/Modern.Net-Tutorial/discussions).
 
 [> Next: Avalonia UI](2_Avalonia.md)
