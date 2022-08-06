@@ -31,7 +31,7 @@ As counter-intuitive as it sounds, the recommended approach is to write your tes
 
 1. Create your public interfaces
 2. Write down a list of all scenarios that need to be tested
-3. Start writing your tests with the expected behaviors
+3. Start writing your tests with the expected behaviors by calling the interfaces
 4. Write your code until all tests pass
 5. Enjoy a service that just "works" as expected no matter what you feed in!
 
