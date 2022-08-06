@@ -169,3 +169,5 @@ Option 1 is to use [Avalonia.Xaml.Behaviors](https://github.com/wieslawsoltes/Av
 Option 2 is to use [Attached Properties](https://docs.avaloniaui.net/docs/data-binding/creating-and-binding-attached-properties) to handle events and create a behavior, particularly if it's a pure visual behavior.
 
 Option 3... I tried porting [Singulink.WPF.Data.MethodBinding](https://github.com/Singulink/Singulink.WPF.Data.MethodBinding) over to [MethodBinding.Avalonia](https://github.com/mysteryx93/MethodBinding.Avalonia) but did not manage to get it working. If you can figure it out, that will become an option. JetBrains Rider also gives warnings on such bindings that cannot be disabled.
+
+[> Next: Dialogs and Tools](5_DialogsTools.md)
