@@ -20,7 +20,8 @@ First, install the plugin in your IDE. [Instructions here.](https://docs.avaloni
 - [Main website](https://avaloniaui.net/)
 - [GitHub source code](https://github.com/AvaloniaUI/Avalonia)
 - [Documentation](https://docs.avaloniaui.net/)
-- [FluentAvalonia](https://github.com/amwx/FluentAvalonia)
+- [FluentAvalonia](https://github.com/amwx/FluentAvalonia) - Better UI
+- [AwesomeAvalonia](https://github.com/AvaloniaCommunity/awesome-avalonia) - List of 3rd party tools
 
 The documentation is still limited, but the pages are very well-written. Take the time to read the various sections. It is very similar to WPF, with some differences that are great improvements. It's a lot easier to translate WPF to Avalonia than the other way around. For undocumented classes, you can often refer to WPF and UWP documentation that will be very similar.
 
