@@ -87,6 +87,16 @@ I've created custom [Styles](https://github.com/mysteryx93/HanumanInstituteApps/
 
 The app then works great with Light, Dark and HighContrast themes that can be set on-the-fly. The styles add a background gradient, changes the style of buttons to look like the FluentAvalonia 'accent' style with 35% opacity, alters the ListBox so that double-click covers the whole item area, and adjusts a few details for my needs.
 
+### Visual Debugging
+
+Setting and altering styles can be difficult, as you don't know how controls are internally structured.
+
+First, run your app and press F12 to open the Avalonia DevTools. Put the tools window on the right-side of the screen and your app on the left. Click on the Visual Tree tab, hover over the control that you want to analyze, and press CTRL+SHIFT. It will browse to that element in the visual tree and you can see what attributes are in effect.
+
+Also, you can browse the source styles, [Avalonia.Themes.Fluent](https://github.com/AvaloniaUI/Avalonia/tree/master/src/Avalonia.Themes.Fluent) if using the built-in styles, or [FluentAvalonia](https://github.com/amwx/FluentAvalonia/tree/master/FluentAvalonia/Styling).
+
+I found out that some styles are set in FluentAvalonia as `Height="32"` or `Padding="2"` directly on the controls without using resources; those cannot be oveerriden at all unless you replace the whole template as [explained in this ticket](https://github.com/amwx/FluentAvalonia/issues/176).
+
 ### Code-Behind
 
 Finally, here's what my code-behind looks like. I want to keep it that way. You might wonder how I achieve a fully-functional app with no code-behind whatsoever. I'll cover that later.
