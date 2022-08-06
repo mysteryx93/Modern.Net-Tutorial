@@ -85,7 +85,7 @@ Create a new [xUnit](https://xunit.net/) project. Give it the same name as your 
 
 Update NuGet packages, add Moq, and add a reference to your project. Also make sure that `xunit.runner.visualstudio` is in your project otherwise you will not be able to run the tests!
 
-Create your GlobalUsings.cs file with commonly-used namespaces.
+Create your `GlobalUsings.cs` file with commonly-used namespaces.
 
 Using this `TestsBase` class can make your life easier.
 
@@ -149,7 +149,6 @@ public class MainViewModelTests : TestsBase
         mock.Setup(x => x.AudioExtensions).Returns(new[] { "mp3" });
     });
     private Mock<IAppPathService> _mockAppPath;
-    private Mock<IAppPathService> _mockAppPath;
 ...
 }
 ```
@@ -209,5 +208,7 @@ Verify: Use xunit `Assert` methods to verify the expected result, resulting in a
 ### Resources
 
 First, read [xUnit documentation](https://xunit.net/), then read [Moq documentation](https://github.com/moq/moq4). Both xunit and Moq have extensive coverage on [StackOverflow](https://stackoverflow.com/), so you can find solution to most problems there.
+
+You can view [432hz Batch Converter tests here.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Converter432hz.Tests)
 
 [> Next: Reactive](7_Reactive.md)
