@@ -150,9 +150,9 @@ If you find yourself having more than 8 dependencies, then your class is probabl
 
 Avoid static methods and classes. They cannot be mocked for unit testing. Instead, use Singleton classes (single instance for the whole application) or extension methods. You can make rare exceptions only if the class does something very specific and predictable with no side-effect.
 
-Do not create extension methods that have dependencies and side-effects. These will be very difficult to unit test. Generally, extension methods, just like static methods, should be predictable with no side-effects. If you make an exception, make sure it won't cause trouble for unit testing.
+I made an exception for [GlobalErrorHandler](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Common/GlobalErrorHandler.cs). I'm not trying to test that class either, and it gets used only during app initialization so it has no impact on my tests.
 
-For example, I created a [Cloning](https://github.com/mysteryx93/HanumanInstitute.Validators/blob/master/Validators/Cloning.cs) class to facilitate cloning objects. Actually, it could have been an extension method, but I avoid creating extension methods on type Object to avoid spamming the intellisense.
+Do not create extension methods that have dependencies. These will be very difficult to unit test. If you make an exception, make sure it won't cause trouble for unit testing.
 
 Another rule of thumb is to avoid `new` keyword in your code. New classes should generally be injected in the constructor, or if you need to create multiple instances, you will inject a Factory in your constructor that is responsible for creating instances. [Here's a sample Factory.](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Player432hz/ViewModels/PlaylistViewModelFactory.cs) The class to create has dependencies, and the factory is responsible for filling those dependencies. The only occasion where it is OK to use the `new` keyword is for well-encapsulated objects that have no side-effects.
 
