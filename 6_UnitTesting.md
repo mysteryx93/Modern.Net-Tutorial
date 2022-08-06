@@ -55,7 +55,7 @@ Unit Tests mean that you run quick tests in a virtual environment, where all inp
 
 Integration Tests mean that you run your code in the real world: with real files and/or with real web services.
 
-If you build a car, you could say that unit testing is running the engine in a garage to ensure it behaves. Integration test is driving the car on the highway. In both cases, you may have a hundred different tests to perform. How should the brakes behave when turning in the snow? Do the new brakes perform as well in the same circumstance? Can you cold-start the car at -40°C?
+If you build a car, you could say that unit testing is running the engine in a garage to ensure it behaves. Integration test is driving the car on the highway. In both cases, you may have a hundred different tests to perform. How should the brakes behave when turning in the snow? Do the new brakes perform as well in the same circumstance? Can you cold-start the car at -40°C? Then you have a series of unit tests on the exhaust regarding noise and emissions at various temperatures.
 
 ### Mocks
 
