@@ -90,6 +90,8 @@ My script will create the application bundle folder structure and zip it:
 - [publish-osx](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Publish/publish-osx)
 - [publish-osx-all](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Publish/publish-osx-all)
 
+It also requires [App.entitlements](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Publish/App.entitlements), [Info.plist](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Publish/Info.plist), and an icon file in ICNS format.
+
 This will create a ZIP file with your bundle. One file for x64, and optionally one file for arm64. Note that x64 should run fine on arm64 anyway.
 
 ### Native Binaries
