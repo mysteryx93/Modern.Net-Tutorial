@@ -62,15 +62,55 @@ I then got these scripts:
 
 It will create an AppImage file. One file for x64, and one file for arm64. You can click on it and your application will run. Your users can install [AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher) for a better experience.
 
-#### AUR
+#### Linux Arch AUR
 
 For Arch users, you can also publish your application in the [AUR](https://aur.archlinux.org/). It's easy to publish from the AppImage content, and your package should end with `-appimage` sufix.
 
-- [Short tutorial](https://withercubes.is-a.dev/blog/publish-packages-in-aur/)
 - [AUR Submission Guidelines](https://wiki.archlinux.org/title/AUR_submission_guidelines)
 - [Arch Package Guidelines](https://wiki.archlinux.org/title/Arch_package_guidelines)
+- [makepkg](https://wiki.archlinux.org/title/Makepkg)
 
-I'll add the instructions to update your package when I publish the next AUR update.
+After having my account and credentials configured...
+
+**How to create a new repo in the AUR**
+
+This will fetch the latest Release from your GitHub repo.
+
+First, create the new Git repo. This will create folder `yangdownloader-appimage.git` in the current directory.
+
+    git clone ssh://aur@aur.archlinux.org/yangdownloader-appimage.git
+    cd yangdownloader-appimage.git
+
+Second, add a `PKGBUILD` file. [Here we add a package that requires ffmpeg.](#)
+
+Third, you must generate the security checksum. This will generate/update `sha256sums_x86_64` in PKGBUILD.
+
+    updpkgsums
+
+Fourth, validate the package by building it
+
+    makepkg
+
+If everything is good, publish it
+
+    makepkg --printsrcinfo > .SRCINFO
+    git add PKGBUILD .SRCINFO
+    git commit -m "useful commit message"
+    git push
+
+Voilà!
+
+**How to update an AUR repo**
+
+First, publish a new Release on GitHub.
+
+Second, update `pkgver` in PKGBUILD.
+
+Third, generate checksum with `updpkgsums`.
+
+Fourth, validate package with `makepkg`.
+
+Fifth, publish with the same commands as above.
 
 ### OSX (x64, arm64)
 
