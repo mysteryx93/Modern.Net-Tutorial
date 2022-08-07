@@ -23,6 +23,8 @@ Where it gets a bit tricky is that Linq, Reactive and DynamicData each have thei
 
 From my limited experience, Reactive itself is relatively intuitive; but DynamicData can get complicated even for moderate tasks. Do not make the mistake of using Reactive just for the sake of using Reactive. Use it where it makes sense. It can make your life much easier for certain things and much harder for others.
 
+For simple projects, Reactive can make things more complicated. However, as the complexity of a project grows, Reactive keeps things simple.
+
 ### Common Usage
 
 Here are some simple usage patterns of Reactive to get started.
@@ -52,11 +54,18 @@ private void ClearImpl()
 } 
 ```
 
+To manually execute the command, since it is an IObservable, you must call Subscribe, or InvokeCommand if possible.
+
+```c#
+Clear.Execute().Subscribe()
+```
+
 ReactiveCommand has several benefits over traditional ICommand, among which:
 
 - It guarantees that the command will never be called twice in parallel.
 - Execute takes a typed parameter, and can return data.
 - CanExecute is automatically set to false when the command is running.
+- The command is an IObservable.
 
 #### Automatic Property
 
