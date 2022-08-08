@@ -41,6 +41,8 @@ What I'm trying to say is that the desktop toolkit situation is a complete mess,
 
 But WAIT! There is one more option: [Avalonia UI](https://avaloniaui.net/). A rewrite of WPF with all the modernizations of UWP and WinUI that works on all platforms: Windows, Linux, MacOS, and soon iOS, Android and even Blazor. It is mature enough for commercial use.
 
+**Although the tools presented here are very powerful, not many people are using this combination of tools because of the sharp learning curve, and the help online is limited. I'm hoping that this tutorial will help grow the community.**
+
 ### My Setup
 
 I got tired of Windows taking ownership of our computer and dumped it ahead of Windows 11's release. I'm using Linux; if you're a programmer, Arch-based is a good option to be cutting-edge. I choose [Garuda Linux](https://garudalinux.org/) and love it (but do NOT install arch-based for your wife and grand-ma!). I got Windows in a VM and rarely use it at all. This forced me to modernize all my apps.
