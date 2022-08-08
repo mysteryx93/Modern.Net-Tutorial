@@ -26,6 +26,7 @@ The reason I'm writing this tutorial is that although .NET has evolved a lot and
 Some advantages of .NET/C#
 - Highly performant*
 - Cross-platform (Windows, Linux, MacOS, iOS, Android)
+- Can embed the framework to have no dependencies
 - Great community support
 - Intuitive and compact language syntax
 - Same language for desktop or web applications
