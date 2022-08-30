@@ -85,6 +85,74 @@ This library is optional, but I use these functions all the time so I don't know
 
 Go through [HanumanInstitute.Validators](https://github.com/mysteryx93/HanumanInstitute.Validators) documentation to check the list of methods available.
 
+### Fody
+
+These extensions will save you a lot of time.
+
+#### [ReactiveUI.Fody](https://github.com/kswoll/ReactiveUI.Fody): Simplify change notification for Reactive classes.
+
+```c#
+[Reactive]public string SearchId { get; set; }
+
+// Instead of...
+public string SearchId 
+{
+    get { return _SearchId; }
+    set { this.RaiseAndSetIfChanged(ref _SearchId, value); }
+}
+```
+
+#### [Fody.PropertyChanged](https://github.com/Fody/PropertyChanged): Simplify change notification for non-Reactive classes.
+
+```c#
+public string GivenNames { get; set; }
+
+// Instead of...
+string name;
+public string Name
+{
+    get => name;
+    set
+    {
+        if (value != name)
+        {
+           name = value;
+           PropertyChanged?.Invoke(nameof(Name));
+        }
+    }
+}
+```
+
+#### [Fody.ConfigureAwait](https://github.com/Fody/ConfigureAwait): Configure async code's ConfigureAwait at a global level.
+
+One of the bad designs of C# is the need to call `.ConfigureAwait()` on every Task Await call. I did not cover async programming in this tutorial, but basically, every time you use the `await` keyword, you must follow it with `.ConfigureAwait()` with `true` if you need to get back to the same thread (important for UI-related tasks that can only run on the UI thread!), or `false` if the code can continue in a different thread after waiting. `false` is almost always needed for class libraries, yet the default is `true`.
+
+For a class library where you got no UI thread, you often have to specify `.ConfigureAwait(false)` for every single call in the whole library! Very annoying and error-prone.
+
+```c#
+await DoSomeWorkAsync().ConfigureAwait(false);
+```
+
+This gets even worse when using `await using` keyword:
+
+```c#
+var connection = new SqlConnection(Options.ConnectionString);
+await using (connection.ConfigureAwait(false))
+{
+    var command = new SqlCommand(Query, connection) { CommandTimeout = Options.CommandTimeout };
+    await using (command.ConfigureAwait(false))
+    {
+        await connection.OpenAsync().ConfigureAwait(false);
+        var sqlDependency = new SqlDependency(command);
+        sqlDependency.OnChange += SqlDependencyOnChange;
+        CurrentSqlDependency = sqlDependency;
+        await using var reader = (await command.ExecuteReaderAsync().ConfigureAwait(false)).ConfigureAwait(false);
+    }
+}
+```
+
+Solution? Simply add [Fody.ConfigureAwait](https://github.com/Fody/ConfigureAwait) to your project and forget all about that mess!
+
 ### HanumanInstitute.MediaPlayerUI
 
 [HanumanInstitute.MediaPlayerUI](https://github.com/mysteryx93/MediaPlayerUI.NET/) is a bit more niche, but if you need a media player, or the UI of a media player for your custom needs, this is it. For Avalonia, it currently only supports audio playback via [BASS](https://www.un4seen.com/) as of writing this. [MPV](https://mpv.io/) support will come later. Both of these players are cross-platform compatible.
