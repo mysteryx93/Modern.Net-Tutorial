@@ -7,7 +7,8 @@
 [5. Dialogs and Tools](5_DialogsTools.md)  
 [6. Unit Testing](6_UnitTesting.md)  
 [7. Reactive](7_Reactive.md)  
-[8. Deployment](8_Deployment.md)
+[8. Deployment](8_Deployment.md)  
+[9. Multiple Environments](9_MultipleEnvironments.md)
 
 ## 2. Avalonia UI
 
