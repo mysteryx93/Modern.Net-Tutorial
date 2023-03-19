@@ -13,7 +13,7 @@
 
 ## 2. Avalonia UI
 
-Avalonia is a modern WPF-like UI that works on all OS: Windows, Linux, MacOS, and soon iOS, Android and even Blazor! It is mature enough for commercial use.
+Avalonia is a modern WPF-like UI that works on all OS: Windows, Linux, MacOS, iOS, Android and even Web Assembly! It is mature enough for commercial use.
 
 First, install the plugin in your IDE. [Instructions here.](https://docs.avaloniaui.net/docs/getting-started/ide-support/jetbrains-rider-setup)
 
