@@ -162,14 +162,22 @@ Option 1 is to use [Avalonia.Xaml.Behaviors](https://github.com/wieslawsoltes/Av
 
 ```xaml
 <Interaction.Behaviors>
-    <EventTriggerBehavior EventName="Opened">
-        <InvokeCommandAction Command="{Binding InitWindow}" />
-    </EventTriggerBehavior>
+    <RoutedEventTriggerBehavior RoutedEvent="{x:Static InputElement.DoubleTappedEvent}">
+        <InvokeCommandAction Command="{Binding Play}" />
+    </RoutedEventTriggerBehavior>
 </Interaction.Behaviors>
 ```
 
 Option 2 is to use [Attached Properties](https://docs.avaloniaui.net/docs/data-binding/creating-and-binding-attached-properties) to handle events and create a behavior, particularly if it's a pure visual behavior.
 
 Option 3... I tried porting [Singulink.WPF.Data.MethodBinding](https://github.com/Singulink/Singulink.WPF.Data.MethodBinding) over to [MethodBinding.Avalonia](https://github.com/mysteryx93/MethodBinding.Avalonia) but did not manage to get it working. If you can figure it out, that will become an option. JetBrains Rider also gives warnings on such bindings that cannot be disabled.
+
+Using MvvmDialogs, in the ViewModel, you can automatically handle the View Loaded, Closing and Closed events by implementing `IViewLoaded`, `IViewClosing` and `IViewClosed`.
+
+### Mobile navigation
+
+MvvmDialogs natively supports mobile devices by turning window dialogs into navigation between views. It even automatically supports the back button to come back to a preview view.
+
+The only difference to use navigation mode is that your ViewLocator needs to return a UserControl instead of a Window. You thus need to implement both `MainView` as UserControl and `MainWindow` as Window, and have your ViewLocator return the correct one. The default ViewLocator replaces ViewModel by View on mobile and ViewModel by Window on desktop.
 
 [> Next: Dialogs and Tools](5_DialogsTools.md)
