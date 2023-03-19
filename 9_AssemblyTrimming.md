@@ -49,6 +49,24 @@ Adding this to the class itself should also work, but I could not get that to wo
 
     [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
 
+## ViewLocator
+
+The default ViewLocator relies on reflection so that's the first thing to change.
+
+`HanumanInstitute.MvvmDialogs` provides a `StrongViewLocator` to manually specify ViewModel-View pairs without the need for reflection.
+
+```c#
+var viewLocator = new StrongViewLocator()
+    .Register<AboutViewModel, AboutView>()
+    .Register<MainViewModel, MainView>()
+    .Register<SettingsViewModel, SettingsView>();
+
+container.Register(() => (IDialogService)new DialogService(new DialogManager(
+    viewLocator: viewLocator,
+    dialogFactory: new DialogFactory().AddFluent()),
+    viewModelFactory: t => Locator.Current.GetService(t)));
+```
+
 ## Bindings
 
 Avalonia used reflection bindings by default, which can result in your ViewModel class members being trimmed. Instead of marking all of your classes as dynamically accessed, you can use compiled bindings.
