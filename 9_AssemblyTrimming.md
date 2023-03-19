@@ -68,6 +68,12 @@ Compiled bindings still have a few bugs, which is why it is not enabled by defau
 
 In practice, I had to copy/paste the base classes into the main assembly, and add `x:CompileBindings="False"` on ListBoxes and ComboBoxes that bind to a `CollectionView<T>`. Any further binding within the ListBox, such as click events, then need `x:CompileBindings="True" x:DataType="vm:IPlaylistViewModel"`.
 
+## EventTriggerBehavior
+
+EventTriggerBehavior relies on reflection. Implement your events as RoutedEvents and use RoutedEventTriggerBehavior instead, which relies on a binding.
+
+If you need to bind to an event that is not a RoutedEvent, you will need to use a custom attached behavior or attached property.
+
 ## Serialization
 
 Serialization depends on reflection which will have issues with Assembly Trimming. One solution is to set DynamicDependency attributes.
