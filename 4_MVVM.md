@@ -174,7 +174,7 @@ Option 3... I tried porting [Singulink.WPF.Data.MethodBinding](https://github.co
 
 Using MvvmDialogs, in the ViewModel, you can automatically handle the View Loaded, Closing and Closed events by implementing `IViewLoaded`, `IViewClosing` and `IViewClosed`.
 
-### Mobile navigation
+### Mobile Navigation
 
 MvvmDialogs natively supports mobile devices by turning window dialogs into navigation between views. It even automatically supports the back button to come back to a preview view.
 
