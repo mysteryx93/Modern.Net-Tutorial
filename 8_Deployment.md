@@ -8,7 +8,8 @@
 [6. Unit Testing](6_UnitTesting.md)  
 [7. Reactive](7_Reactive.md)  
 [8. Deployment](8_Deployment.md)  
-[9. Multiple Environments](9_MultipleEnvironments.md)
+[9. Assembly Trimming](9_AssemblyTrimming.md)  
+[10. Multiple Environments](10_MultipleEnvironments.md)
 
 ## 8. Deployment
 
@@ -198,3 +199,5 @@ By adding a reference to this project, your will automatically get all needed DL
 You can probably automate these builds with [GitHub Actions](https://github.com/features/actions).
 
 If you come up with a good solution, you can post your instructions! You could also post how to automate the tests at the same time.
+
+[> Next: Assembly Trimming](9_AssemblyTrimming.md)
