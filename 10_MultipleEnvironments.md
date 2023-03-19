@@ -8,9 +8,10 @@
 [6. Unit Testing](6_UnitTesting.md)  
 [7. Reactive](7_Reactive.md)  
 [8. Deployment](8_Deployment.md)  
-[9. Multiple Environments](9_MultipleEnvironments.md)
+[9. AssemblyTrimming](9_AssemblyTrimming.md)  
+[10. Multiple Environments](10_MultipleEnvironments.md)
 
-## 9. Setting Up Multiple Environments
+## 10. Setting Up Multiple Environments
 
 You can develop an Avalonia application and run it on Windows, MacOS and Linux without issues. 
 You'll most likely only experience minor problems with file paths, permissions and such.
