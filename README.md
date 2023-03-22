@@ -41,7 +41,7 @@ Microsoft released WinForms back in 2002. Then, they released WPF in 2006 which 
 
 What I'm trying to say is that the desktop toolkit situation is a complete mess, and that's why most programmers have moved to other alternatives.
 
-But WAIT! There is one more option: [Avalonia UI](https://avaloniaui.net/). A rewrite of WPF with all the modernizations of UWP and WinUI that works on all platforms: Windows, Linux, MacOS, and soon iOS, Android and even Blazor. It is mature enough for commercial use.
+But WAIT! There is one more option: [Avalonia UI](https://avaloniaui.net/). A rewrite of WPF with all the modernizations of UWP and WinUI that works on all platforms: Windows, Linux, MacOS, Android, iOS, and WebAssembly. It is mature enough for commercial use.
 
 **Although the tools presented here are very powerful, not many people are using this combination of tools because of the sharp learning curve, and the help online is limited. I'm hoping that this tutorial will help grow the community.**
 
