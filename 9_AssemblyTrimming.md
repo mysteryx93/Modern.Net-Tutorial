@@ -23,7 +23,7 @@ Avalonia v0.10.18 supports trimming with "copyused" mode by adding this to your 
 <TrimMode>CopyUsed</TrimMode>
 ```
 
-Avalonia v11 nightly build supports full Assembly Trimming, and it will be supported as of `preview6`. This is essential to deploy applications on multiple platforms where you want to embed the .NET framework. Particularly on Android/iOS when you need to embed it and use AOT to improve startup time and increase battery life (at the cost of disk space).
+Avalonia v11 supports full Assembly Trimming as of `preview6`. This is essential to deploy applications on multiple platforms where you want to embed the .NET framework. Particularly on Android/iOS when you need to embed it and use AOT to improve startup time and increase battery life (at the cost of disk space).
 
 To enable Assembly Trimming (reduce file size) and enable AOT (Ahead of Time compilation to shorten startup time), add this to your `.csproj`
 
