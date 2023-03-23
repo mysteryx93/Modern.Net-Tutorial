@@ -119,9 +119,11 @@ d:DataContext="{x:Static local:ViewModelLocator.Main}"
 
 ### Create Your Project
 
-With the Avalonia plugin installed, create a new project of type "Avalonia MVVM Application". [Instructions here.](https://docs.avaloniaui.net/tutorials/todo-list-app/creating-a-new-project)
+There are two project templates available: desktop-only or cross-platform. Either way, I highly recommend going with Avalonia v11 even if it is in preview.
 
-There are 2 types of .NET projects: old-style and new-style. If you have .NET 4 projects and open the project file, it is very lengthy. It's an old format with many limitations. Make sure you have the new SDK-style projects by creating a new .NET Core project.
+For desktop-only project, [follow these instructions to create a "Avalonia MVVM Application".](https://docs.avaloniaui.net/tutorials/todo-list-app/creating-a-new-project)
+
+For cross-platform project, [follow these instructions.](https://docs.avaloniaui.net/tutorials/developing-for-mobile/create-a-cross-platform-solution)
 
 Make sure that you target the right framework, that Nullables are enabled, and that you use the latest language features, by having this in your `csproj`.
 
