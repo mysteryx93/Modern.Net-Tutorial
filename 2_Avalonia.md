@@ -128,7 +128,7 @@ For cross-platform project, [follow these instructions.](https://docs.avaloniaui
 Make sure that you target the right framework, that Nullables are enabled, and that you use the latest language features, by having this in your `csproj`.
 
 ```
-<TargetFramework>net6.0</TargetFramework>
+<TargetFramework>net7.0</TargetFramework>
 <Nullable>enable</Nullable>
 <LangVersion>default</LangVersion>
 ```
