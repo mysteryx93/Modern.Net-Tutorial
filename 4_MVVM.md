@@ -15,7 +15,7 @@
 
 MVVM stands for Model - View - ViewModel.
 
-If you look at my [project structure](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Converter432hz), I have: Models, Views, ViewModels, Business and Assets. [Services](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Common.Services) have been moved to a separate project but could definitely be in a folder.
+If you look at my [project structure](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Converter432Hz), I have: Models, Views, ViewModels, Business and Assets. [Services](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Common.Services) have been moved to a separate project but could definitely be in a folder.
 
 **Models** are data structures to hold data. Ideally, it shouldn't contain any logic at all. Such logic should instead be moved to your services and ViewModels.
 
