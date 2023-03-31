@@ -85,8 +85,8 @@ With `icon` defined as
 
 ### Sample Code
 
-[Here are some sample Views created using these principles.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Converter432hz/Views)
-I've created custom [Styles](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Styles/CommonStyles.axaml) and [Resources](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Styles/CommonResources.axaml) that are registered in [App.xaml](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Converter432hz/App.axaml).
+[Here are some sample Views created using these principles.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Converter432Hz/Views)
+I've created custom [Styles](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Styles/CommonStyles.axaml) and [Resources](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Styles/CommonResources.axaml) that are registered in [App.xaml](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Converter432Hz/App.axaml).
 
 The app then works great with Light, Dark and HighContrast themes that can be set on-the-fly. The styles add a background gradient, changes the style of buttons to look like the FluentAvalonia 'accent' style with 35% opacity, alters the ListBox so that double-click covers the whole item area, and adjusts a few details for my needs.
 
