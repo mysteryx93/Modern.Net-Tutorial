@@ -92,6 +92,10 @@ Read the [Reactive documentation](https://www.reactiveui.net/docs/).
 
 For [DynamicData](https://github.com/reactivemarbles/DynamicData), here is a [collection of Snippets](https://github.com/RolandPheasant/DynamicData.Snippets) to achieve various tasks.
 
+To get started, [this short tutorial shows some easy and practical applications](https://rehansaeed.com/reactive-extensions-part1-replacing-events/).
+
+There is also [more advanced usage here](http://introtorx.com/).
+
 For support, you can get help on the [Reactive Slack channel](https://reactivex.slack.com).
 
 [> Next: Deployment](8_Deployment.md)
