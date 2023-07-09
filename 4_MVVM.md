@@ -15,7 +15,7 @@
 
 MVVM stands for Model - View - ViewModel.
 
-If you look at my [project structure](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Converter432Hz), I have: Models, Views, ViewModels, Business and Assets. [Services](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Common.Services) have been moved to a separate project but could definitely be in a folder.
+If you look at my [project structure](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Src/App.Converter432Hz/Converter432Hz), I have: Models, Views, ViewModels, Business and Assets. [Services](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Src/Services) have been moved to a separate project but could definitely be in a folder.
 
 **Models** are data structures to hold data. Ideally, it shouldn't contain any logic at all. Such logic should instead be moved to your services and ViewModels.
 
@@ -28,7 +28,7 @@ public partial class MainView : CommonWindow<MainViewModel>
 }
 ```
 
-**ViewModels** are logic classes that will be attached as the View's DataContext. All interactions between the View and ViewModel will be done with data binding and commands. You can really accomplish everything that way. You may need [Attached Properties](https://docs.avaloniaui.net/docs/data-binding/creating-and-binding-attached-properties) and [Binding Converters](https://docs.avaloniaui.net/docs/data-binding/converting-binding-values) to achieve certain tasks.
+**ViewModels** are logic classes that will be attached as the View's DataContext. All interactions between the View and ViewModel will be done with data binding and commands. You can really accomplish everything that way. You may need [Attached Properties](https://docs.avaloniaui.net/docs/next/concepts/attached-property) and [Binding Converters](https://docs.avaloniaui.net/docs/next/guides/data-binding/how-to-create-a-custom-data-binding-converter) to achieve certain tasks.
 
 **Services** are classes that provide functionalities around a specific topic.
 
@@ -40,32 +40,35 @@ If you come from WinForms, it can be a mind-twist to separate the UI from the co
 
 ### Simplifying with Utility Classes
 
-With this [AppStarter](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Common/AppStarter.cs), `Program.cs` contains only this
+With this [AppStarter](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/Apps/Application/AppStarter.cs), `Program.cs` contains only this
 
 ```c#
 public class Program
 {
+    [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(SettingsPlaylistItem))]
     [STAThread]
-    public static void Main(string[] args) => AppStarter.Start<App>(args, 
-        () => Locator.Current.GetService<IAppPathService>()?.UnhandledExceptionLogPath);
+    public static void Main(string[] args) => AppStarter.Start<App>(args,
+        () => ViewModelLocator.SettingsProvider.Value,
+        () => ViewModelLocator.AppPathService.UnhandledExceptionLogPath);
 
-    // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp() => AppStarter.BuildAvaloniaApp<App>();
 }
 ```
 
-With this [CommonApplication](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Common/CommonApplication.cs), `App.axaml.cs` contains only this
+With this [CommonApplication](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/Apps/Application/CommonApplication.cs), `App.axaml.cs` contains only this
 
 ```c#
 public class App : CommonApplication<MainView>
 {
     public override void Initialize() => AvaloniaXamlLoader.Load(this);
 
-    protected override INotifyPropertyChanged? InitViewModel() => ViewModelLocator.Main;
-    
-    protected override AppTheme GetTheme() => ViewModelLocator.SettingsProvider.Value.Theme;
+    protected override INotifyPropertyChanged InitViewModel() => ViewModelLocator.Main;
 
-    protected override void BackgroundInit() => BassDevice.Instance.Init();
+    protected override void BackgroundInit()
+    {
+        BassDevice.Instance.InitPlugins();
+        BassDevice.Instance.VerifyPlugins();
+    }
 }
 ```
 
@@ -78,7 +81,7 @@ public class ViewLocator : ViewLocatorBase
 }
 ```
 
-With [CommonWindow](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia/Controls/CommonWindow.cs), `MainView.cs` contains only this
+With [CommonWindow](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/Avalonia/Controls/CommonWindow.cs), `MainView.cs` contains only this
 
 ```c#
 public partial class MainView : CommonWindow<MainViewModel>
@@ -87,25 +90,25 @@ public partial class MainView : CommonWindow<MainViewModel>
 }
 ```
 
-I've also kept my `App.axaml.cs` file clean by moving [Styles](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Styles/CommonStyles.axaml) and [Resources](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Styles/CommonResources.axaml) into an external file.
+I've also kept my `App.axaml.cs` file clean by moving [Styles](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/Apps/Styles/CommonStyles.axaml) and [Resources](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/Apps/Styles/CommonResources.axaml) into an external file.
 
 ```xaml
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:HanumanInstitute.Converter432hz"
+             xmlns:local="using:HanumanInstitute.Converter432Hz"
              xmlns:ui="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
-             x:Class="HanumanInstitute.Converter432hz.App">
+             x:Class="HanumanInstitute.Converter432Hz.App">
     <Application.DataTemplates>
         <local:ViewLocator />
     </Application.DataTemplates>
     <Application.Styles>
-        <ui:FluentAvaloniaTheme PreferSystemTheme="False" />
-        <StyleInclude Source="avares://Common.Avalonia.App/Styles/CommonStyles.axaml" />
+        <ui:FluentAvaloniaTheme PreferSystemTheme="False" CustomAccentColor="#0a9648" />
+        <StyleInclude Source="avares://HanumanInstitute.Apps/Styles/CommonStyles.axaml" />
     </Application.Styles>
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://Common.Avalonia.App/Styles/CommonResources.axaml" />
+                <ResourceInclude Source="avares://HanumanInstitute.Apps/Styles/CommonResources.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
@@ -114,9 +117,9 @@ I've also kept my `App.axaml.cs` file clean by moving [Styles](https://github.co
 
 ### Binding to UI
 
-[Binding documentation is here.](https://docs.avaloniaui.net/docs/data-binding/bindings)
+[Binding documentation is here.](https://docs.avaloniaui.net/docs/next/basics/data/data-binding/data-binding-syntax)
 
-To bind ListBox and ComboBox, you may find this [CollectionView](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia/Controls/CollectionView.cs) and [ListItemCollectionView](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia/Controls/ListItemCollectionView.cs) very useful to bind both the list and the selection.
+To bind ListBox and ComboBox, you may find this [CollectionView](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/Avalonia/Controls/CollectionView.cs) and [ListItemCollectionView](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/Avalonia/Controls/ListItemCollectionView.cs) very useful to bind both the list and the selection.
 
 ```c#
 public ListItemCollectionView<EncodeFormat> FormatsList { get; } = new()
@@ -128,7 +131,7 @@ public ListItemCollectionView<EncodeFormat> FormatsList { get; } = new()
 ```
 
 ```xaml
-<ComboBox Items="{Binding FormatsList}" SelectedItem="{Binding FormatsList.CurrentItem}">
+<ComboBox ItemsSource="{Binding FormatsList}" SelectedItem="{Binding FormatsList.CurrentItem}">
 ```
 
 To bind ICommand, the author of Reactive recommended me to expose ReactiveCommand instead of ICommand.
@@ -148,7 +151,7 @@ private void AddPlaylistImpl()
 <Button Width="35" Content="Add" Command="{Binding AddPlaylist}" />
 ```
 
-OK I'm cheating. `RxCommandUnit` is a shortcut for `ReactiveCommand<Unit, Unit>` defined in `GlobalUsings.cs`
+OK I'm cheating. `RxCommandUnit` is a shortcut for `ReactiveCommand<Unit, Unit>` defined in `Usings.cs`
 
 ```c#
 global using RxCommandUnit = ReactiveUI.ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit>;
@@ -168,7 +171,7 @@ Option 1 is to use [Avalonia.Xaml.Behaviors](https://github.com/wieslawsoltes/Av
 </Interaction.Behaviors>
 ```
 
-Option 2 is to use [Attached Properties](https://docs.avaloniaui.net/docs/data-binding/creating-and-binding-attached-properties) to handle events and create a behavior, particularly if it's a pure visual behavior.
+Option 2 is to use [Attached Properties](https://docs.avaloniaui.net/docs/next/concepts/attached-property) to handle events and create a behavior, particularly if it's a pure visual behavior.
 
 Option 3... I tried porting [Singulink.WPF.Data.MethodBinding](https://github.com/Singulink/Singulink.WPF.Data.MethodBinding) over to [MethodBinding.Avalonia](https://github.com/mysteryx93/MethodBinding.Avalonia) but did not manage to get it working. If you can figure it out, that will become an option. JetBrains Rider also gives warnings on such bindings that cannot be disabled.
 
