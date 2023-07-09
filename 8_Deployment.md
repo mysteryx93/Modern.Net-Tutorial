@@ -15,9 +15,13 @@
 
 Your Avalonia app is working! Now what? You need to deploy it for Windows, Linux, MacOS, iOS, Android, Blazor...
 
-The best approach is to create yourself some script files that automate the builds. Create a [Publish folder](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Publish) to place your scripts.
+[PupNet Deploy](https://github.com/kuiperzone/PupNet-Deploy) is a great tool to facilitate deployment. As of writing this, it supports AppImage for Linux, setup file for Windows, Flatpak for Linux, Debian binary package, RPM binary package, and plain old zip. PupNet-Deploy will require [pupnet.conf](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Src/App.Converter432Hz/Deploy) in your project.
 
-I create a script for each target OS that takes 2 parameters: project folder and target runtime. Ex: `eg: publish-win Player432hz win-x86`
+PupNet-Deploy does not yet have support for MacOS, iOS and Android. That may come later.
+
+The best approach is to create some script files that automate the builds. Create a [Publish folder](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Publish) to place your scripts.
+
+I create a script for each target OS that takes 3 parameters: project folder, target runtime and kind. Ex: `eg: publish-win Player432Hz win-x64 setup`
 
 I then have another script that compiles all versions for a specific OS (x64, x86).
 
@@ -48,17 +52,15 @@ If they fix msbuild on Linux/MacOS, I got a Bash version of the script too
 - [publish-win](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Publish/publish-win)
 - [publish-win-all](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Publish/publish-win-all)
 
-This will create a ZIP file with your binaries. One file for x86, and one file for x64.
-
-TODO: You could use [Inno Setup](https://jrsoftware.org/isinfo.php) to create an installer. (You can post the instructions if you do so)
+This will create a ZIP file with your binaries plus a Setup file. One file for x86, and one file for x64.
 
 ### Linux (x64, arm64)
 
-For Linux, the best option is to publish an [AppImage](https://appimage.org/). It creates a single file that runs on every Linux distro. You can also post your project on [AppImageHub](https://www.appimagehub.com/).
+For Linux, you *must* build it in Linux; or in WSL.
 
-You *must* build it in Linux; or in WSL. [Publish-AppImage](https://github.com/kuiperzone/Publish-AppImage) is a script that will do the job for you. You'll need [publish-appimage](https://github.com/kuiperzone/Publish-AppImage/blob/main/publish-appimage) in your `Publish` folder and [publish-appimage.conf](https://github.com/kuiperzone/Publish-AppImage/blob/main/publish-appimage.conf) in your project folder.
+For Linux, the best option is to publish an [AppImage](https://appimage.org/). It creates a single file that runs on every Linux distro. You can also post your project on [AppImageHub](https://www.appimagehub.com/). Other options supported by PupNet Deploy are DBP, RPM and Flatpak.
 
-I then got these scripts:
+Here's my script for Linux
 - [publish-linux](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Publish/publish-linux)
 - [publish-linux-all](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Publish/publish-linux-all)
 
@@ -144,7 +146,7 @@ Create a new project. For BASS audio libraries, I created BassDlls.csproj with t
 
 Add `or '$(RuntimeIdentifier)'==''"` to the binaries you want at compile-time for development.
 
-Add your binaries in each folder for the respective runtimes. [Sample here.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/DLL/Bass)
+Add your binaries in each folder for the respective runtimes. [Sample here.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Dll/Bass)
 
 By adding a reference to this project, your will automatically get all needed DLLs directly in your output folder!
 
@@ -192,6 +194,12 @@ By adding a reference to this project, your will automatically get all needed DL
     </Content>
   </ItemGroup>
 </Project>
+```
+
+When referencing the project, set `ReferenceOutputAssembly` to false to avoid having an empty project dll file.
+
+```xml
+<ProjectReference Include="..\..\..\Dll\Bass\BassDlls.csproj" ReferenceOutputAssembly="false" />
 ```
 
 ### Automations
