@@ -225,6 +225,6 @@ Verify: Use xunit `Assert` methods to verify the expected result, resulting in a
 
 First, read [xUnit documentation](https://xunit.net/), then read [Moq documentation](https://github.com/moq/moq4). Both xunit and Moq have extensive coverage on [StackOverflow](https://stackoverflow.com/), so you can find solution to most problems there.
 
-You can view [432hz Batch Converter tests here.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Converter432hz.Tests)
+You can view [432hz Batch Converter tests here.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Src/App.Converter432Hz/Converter432Hz.Tests)
 
 [> Next: Reactive](7_Reactive.md)
