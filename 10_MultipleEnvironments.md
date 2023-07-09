@@ -34,7 +34,7 @@ You can easily install Windows 10 in KVM. There are plenty of guides online, jus
 
 For Android, install [Android-x86](https://www.android-x86.org/). You'll need at least 5GB of space to debug and run your apps.
 
-For MacOS, [Install MacOS on KVM](https://github.com/kholia/OSX-KVM). XCode alone takes about 8GB so you'll need about 55GB. Unfortunately, MacOS is not usable without GPU passthrough (works only for simple tasks like XCode) so you'll need to set it up with GPU passthrough. On my dual-graphics laptop, I pass it my Intel GPU which means that I cannot use it with HDMI output, but I can use it without having to close my session.
+For MacOS, [Install MacOS on KVM](https://github.com/kholia/OSX-KVM). XCode alone takes about 8GB so you'll need about 55GB. Unfortunately, MacOS is not usable without GPU passthrough (works only for simple tasks like XCode) so you'll need to set it up with GPU passthrough which can be extremely difficult and only certain GPUs may be supported. Another option is to rent access to a Mac online.
 
 For iOS... there are no KVM emulators for iPhone, but MacOS does have an emulator.
 
