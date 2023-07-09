@@ -15,7 +15,7 @@
 
 Avalonia is a modern WPF-like UI that works on all OS: Windows, Linux, MacOS, iOS, Android and even Web Assembly! It is mature enough for commercial use.
 
-First, install the plugin in your IDE. [Instructions here.](https://docs.avaloniaui.net/docs/getting-started/ide-support/jetbrains-rider-setup)
+First, install the plugin in your IDE. [Instructions here.](https://docs.avaloniaui.net/docs/next/get-started/set-up-an-editor)
 
 ### Resources
 
@@ -25,7 +25,7 @@ First, install the plugin in your IDE. [Instructions here.](https://docs.avaloni
 - [FluentAvalonia](https://github.com/amwx/FluentAvalonia) - Better UI
 - [AwesomeAvalonia](https://github.com/AvaloniaCommunity/awesome-avalonia) - List of 3rd party tools
 
-The documentation is still limited, but the pages are very well-written. Take the time to read the various sections. It is very similar to WPF, with some differences that are great improvements. It's a lot easier to translate WPF to Avalonia than the other way around. For undocumented classes, you can often refer to WPF and UWP documentation that will be very similar.
+The documentation is very well-written. Take the time to read the various sections. It is very similar to WPF, with some differences that are great improvements. It's a lot easier to translate WPF to Avalonia than the other way around. For undocumented classes, you can often refer to WPF and UWP documentation that will be very similar.
 
 For more help:
 - [GitHub Avalonia Discussions](https://github.com/AvaloniaUI/Avalonia/discussions)
@@ -78,17 +78,17 @@ With `icon` defined as
 
 ```xaml
 <Style Selector="Button.icon">
-    <Setter Property="FontFamily" Value="avares://Common.Avalonia.App/Styles/HanumanInstituteAppIcons.otf#" />
+    <Setter Property="FontFamily" Value="avares://Common.Avalonia.App/Styles/Icons.otf#" />
     <Setter Property="FontSize" Value="17" />
 </Style>
 ```
 
 ### Sample Code
 
-[Here are some sample Views created using these principles.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Converter432Hz/Views)
-I've created custom [Styles](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Styles/CommonStyles.axaml) and [Resources](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Common.Avalonia.App/Styles/CommonResources.axaml) that are registered in [App.xaml](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Converter432Hz/App.axaml).
+[Here are some sample Views created using these principles.](https://github.com/mysteryx93/HanumanInstituteApps/tree/master/Src/App.Converter432Hz/Converter432Hz/Views)
+I've created custom [Styles](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/Apps/Styles/CommonStyles.axaml) and [Resources](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/Apps/Styles/CommonResources.axaml) that are registered in [App.xaml](https://github.com/mysteryx93/HanumanInstituteApps/blob/master/Src/App.Converter432Hz/Converter432Hz/App.axaml).
 
-The app then works great with Light, Dark and HighContrast themes that can be set on-the-fly. The styles add a background gradient, changes the style of buttons to look like the FluentAvalonia 'accent' style with 35% opacity, alters the ListBox so that double-click covers the whole item area, and adjusts a few details for my needs.
+The app then works great with Light and Dark themes that can be set on-the-fly. The styles add a background gradient, changes the style of buttons to look like the FluentAvalonia 'accent' style with 35% opacity, alters the ListBox so that double-click covers the whole item area, and adjusts a few details for my needs.
 
 ### Visual Debugging
 
@@ -96,9 +96,7 @@ Setting and altering styles can be difficult, as you don't know how controls are
 
 First, run your app and press F12 to open the Avalonia DevTools. Put the tools window on the right-side of the screen and your app on the left. Click on the Visual Tree tab, hover over the control that you want to analyze, and press CTRL+SHIFT. It will browse to that element in the visual tree and you can see what attributes are in effect.
 
-Also, you can browse the source styles, [Avalonia.Themes.Fluent](https://github.com/AvaloniaUI/Avalonia/tree/master/src/Avalonia.Themes.Fluent) if using the built-in styles, or [FluentAvalonia](https://github.com/amwx/FluentAvalonia/tree/master/FluentAvalonia/Styling).
-
-I found out that some styles are set in FluentAvalonia as `Height="32"` or `Padding="2"` directly on the controls without using resources; those cannot be oveerriden at all unless you replace the whole template as [explained in this ticket](https://github.com/amwx/FluentAvalonia/issues/176).
+Also, you can browse the source styles, [Avalonia.Themes.Fluent](https://github.com/AvaloniaUI/Avalonia/tree/master/src/Avalonia.Themes.Fluent) if using the built-in styles, or [FluentAvalonia](https://github.com/amwx/FluentAvalonia/tree/master/src/FluentAvalonia/Styling).
 
 ### Code-Behind
 
@@ -119,11 +117,7 @@ d:DataContext="{x:Static local:ViewModelLocator.Main}"
 
 ### Create Your Project
 
-There are two project templates available: desktop-only or cross-platform. Either way, I highly recommend going with Avalonia v11 even if it is in preview.
-
-For desktop-only project, [follow these instructions to create a "Avalonia MVVM Application".](https://docs.avaloniaui.net/tutorials/todo-list-app/creating-a-new-project)
-
-For cross-platform project, [follow these instructions.](https://docs.avaloniaui.net/tutorials/developing-for-mobile/create-a-cross-platform-solution)
+There are two project templates available: desktop-only or cross-platform. Instructions [here](https://docs.avaloniaui.net/docs/next/get-started/test-drive/create-a-project) and [here](https://docs.avaloniaui.net/docs/next/guides/building-cross-platform-applications/solution-setup).
 
 Make sure that you target the right framework, that Nullables are enabled, and that you use the latest language features, by having this in your `csproj`.
 
@@ -135,7 +129,7 @@ Make sure that you target the right framework, that Nullables are enabled, and t
 
 For code styles, if you want to use the most recommended coding practices, it is safe to grab the `.editorconfig` file from the .NET Roslyn Compiler project [here](https://github.com/dotnet/roslyn/blob/main/.editorconfig). Place it in your solution folder to be available for all projects.
 
-Also make sure to create a file `GlobalUsings.cs` that contains namespaces that you commonly use.
+Also make sure to create a file `Usings.cs` that contains namespaces that you commonly use.
 
 ```c#
 global using System;
@@ -148,7 +142,7 @@ global using static System.FormattableString;
 
 ### App.xaml.cs
 
-Put this in App.xaml.cs
+Put this in `App.xaml.cs`
 
 As of writing this, there's a bug where XAML namespaces of custom libraries do not get recognized by the designer. You must use `GC.KeepAlive` on any class within such libraries to solve this.
 
