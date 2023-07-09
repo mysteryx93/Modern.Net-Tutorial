@@ -157,6 +157,6 @@ Solution? Simply add [Fody.ConfigureAwait](https://github.com/Fody/ConfigureAwai
 
 ### HanumanInstitute.MediaPlayerUI
 
-[HanumanInstitute.MediaPlayerUI](https://github.com/mysteryx93/MediaPlayerUI.NET/) is a bit more niche, but if you need a media player, or the UI of a media player for your custom needs, this is it. For Avalonia, it currently only supports audio playback via [BASS](https://www.un4seen.com/) as of writing this. [MPV](https://mpv.io/) support will come later. Both of these players are cross-platform compatible.
+[HanumanInstitute.MediaPlayerUI](https://github.com/mysteryx93/MediaPlayerUI.NET/) is a bit more niche, but if you need a media player, or the UI of a media player for your custom needs, this is it. Both BASS and MPV players are cross-platform compatible.
 
 [> Next: Unit Testing](6_UnitTesting.md)
