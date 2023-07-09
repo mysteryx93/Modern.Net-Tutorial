@@ -17,13 +17,7 @@ WPF does not support Assembly Trimming, neither does WinUI3.
 
 > Built a toy MAUI app with three textboxes and SQLite, and it is a whopping 300 MB (127 MB zipped) to set a couple values in a database.
 
-Avalonia v0.10.18 supports trimming with "copyused" mode by adding this to your project file. Unfortunately, .NET 7 does not support "copyused".
-
-```xaml
-<TrimMode>CopyUsed</TrimMode>
-```
-
-Avalonia v11 supports full Assembly Trimming as of `preview6`. This is essential to deploy applications on multiple platforms where you want to embed the .NET framework. Particularly on Android/iOS when you need to embed it and use AOT to improve startup time and increase battery life (at the cost of disk space).
+Avalonia v11 supports full Assembly Trimming. This is essential to deploy applications on multiple platforms where you want to embed the .NET framework. Particularly on Android/iOS when you need to embed it and use AOT to improve startup time and increase battery life (at the cost of disk space).
 
 To enable Assembly Trimming (reduce file size) and enable AOT (Ahead of Time compilation to shorten startup time), add this to your `.csproj`
 
@@ -131,7 +125,5 @@ This resulted in about 0.2mb larger file size.
 ## UI Thread
 
 Some operations, such as adding items to a list shown on the UI from a background thread, would work fine until I enable trimming. Make sure you perform those operations from the UI thread.
-
-I'm also still having issues with [Reactive Commands not executing on the UI thread after Assembly Trimming](https://github.com/AvaloniaUI/Avalonia/issues/10711). I will update once the problem is solved.
 
 [> Next: Multiple Environments](10_MultipleEnvironments.md)
